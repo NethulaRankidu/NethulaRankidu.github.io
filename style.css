@@ -28,6 +28,7 @@ body {
 }
 
 /* pfp rotation */
+
 @-webkit-keyframes rotating {
     from {
         -webkit-transform: rotate(0deg);
@@ -70,29 +71,30 @@ body {
 
 /* Discord and spotify activity */
 
-.img-activity{
+.img-activity {
     height: 70px;
     margin-right: 2px;
     border-radius: 10px;
 }
 
-.activity-main{
+.activity-main {
     display: flex;
 }
 
-.div-spotify, .card{
+.div-spotify,
+.card {
     background-color: rgba(255, 255, 255, 0.25);
     width: 300px;
     margin: 10px;
     border-radius: 10px;
 }
 
-.dis-flex-wrap{
+.dis-flex-wrap {
     display: flex;
     flex-wrap: wrap;
 }
 
-.div-2-1{
+.div-2-1 {
     width: calc(100vw - 350px);
     background-color: rgba(255, 255, 255, 0.25);
     padding: 5px;
@@ -101,19 +103,55 @@ body {
     border-radius: 20px;
 }
 
-.card{
+.card {
     width: 200px;
     display: flex;
     justify-content: space-around;
     padding: 5px;
 }
 
-.card i{
+.card i {
     font-size: 50px;
 }
 
-.card h3{
-    display:flex;
+.card h3 {
+    display: flex;
     align-items: center;
     justify-content: center;
+}
+
+@media screen and (min-width:800px) {
+
+    .div-2-1 {
+        width: calc(100vw - 450px);
+    }
+
+    body{
+        margin: 0px 50px;
+    }
+}
+
+@media screen and (max-width:650px){
+    .div-2-1 {
+        width: calc(100vw - 100px);
+    }
+    .about{
+        display: block;
+    }
+    body{
+        margin: 0px 50px;
+    }
+    .div-spotify{
+        width: calc(100vw - 100px);
+    }
+}
+@media screen and (min-width:900px) {
+
+    .div-2-1 {
+        width: calc(100vw - 750px);
+    }
+
+    body{
+        margin: 0px 200px;
+    }
 }

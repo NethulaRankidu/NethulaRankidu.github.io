@@ -60,3 +60,8 @@ function index() {
         console.error(err);
     });
 }
+
+function clipboardDiscord(){
+    navigator.clipboard.writeText("wintergreen6631");
+    window.alert("Username copied to clipboard!");
+}
