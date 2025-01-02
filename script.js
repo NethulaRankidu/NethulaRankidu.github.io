@@ -17,7 +17,6 @@ function index() {
         // Work with JSON data here
         var avatar = data.data.discord_user.avatar;
         var user = data.data.discord_user.id;
-        img.src = "https://cdn.discordapp.com/avatars/" + user + "/" + avatar;
 
         if (data.data.listening_to_spotify == true) {
             console.log("Album Art = " + data.data.spotify.album_art_url);
