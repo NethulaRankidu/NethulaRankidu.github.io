@@ -34,21 +34,29 @@ function index() {
 
         if(data.data.activities.length != 0){
             if (data.data.activities[0].name != "Spotify") {
-                console.log(data.data.activities[0].name);
-                activity_name.innerHTML = data.data.activities[0].name;
-                activity_state.innerHTML = data.data.activities[0].state;
-                activity_details.innerHTML = data.data.activities[0].details;
-    
-                var str = data.data.activities[0].assets.large_image;
-                activity_cover.src = "https:/"+str.split("https").pop();
+                activityData(0);
             } else if (data.data.activities[1].name != "Spotify") {
-                console.log(data.data.activities[1].name);
-                activity_name.innerHTML = data.data.activities[1].name;
-                activity_state.innerHTML = data.data.activities[1].state;
-                activity_details.innerHTML = data.data.activities[1].details;
+                activityData(1);
+            }
 
-                var str = data.data.activities[1].assets.large_image;
+            function activityData(x){
+                console.log(data.data.activities[x].name);
+                activity_name.innerHTML = data.data.activities[x].name;
+                activity_state.innerHTML = data.data.activities[x].state;
+                activity_details.innerHTML = data.data.activities[x].details;
+    
+                var str = data.data.activities[x].assets.large_image;
                 activity_cover.src = "https:/"+str.split("https").pop();
+
+                if(activity_name.innerHTML == "undefined"){
+                    activity_name.innerHTML = "";
+                }
+                if(activity_state.innerHTML == "undefined"){
+                    activity_state.innerHTML = "";
+                }
+                if(activity_details.innerHTML == "undefined"){
+                    activity_details.innerHTML = "";
+                }
             }
         }
 
