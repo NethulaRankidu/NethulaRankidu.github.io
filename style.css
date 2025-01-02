@@ -1,0 +1,119 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #121212;
+    font-family: sans-serif;
+    color: white;
+    padding: auto;
+}
+
+.dark-grey-clr {
+    color: rgb(75, 75, 75);
+}
+
+/* Styles for index.html */
+.div-1 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.pfp {
+    height: 200px;
+    border-radius: 50%;
+}
+
+/* pfp rotation */
+@-webkit-keyframes rotating {
+    from {
+        -webkit-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+
+    to {
+        -webkit-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes rotating {
+    from {
+        -ms-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+
+    to {
+        -ms-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+.pfp {
+    -webkit-animation: rotating 10s linear infinite;
+    -moz-animation: rotating 10s linear infinite;
+    -ms-animation: rotating 10s linear infinite;
+    -o-animation: rotating 10s linear infinite;
+    animation: rotating 10s linear infinite;
+}
+
+/* Discord and spotify activity */
+
+.img-activity{
+    height: 70px;
+    margin-right: 2px;
+    border-radius: 10px;
+}
+
+.activity-main{
+    display: flex;
+}
+
+.div-spotify, .card{
+    background-color: rgba(255, 255, 255, 0.25);
+    width: 300px;
+    margin: 10px;
+    border-radius: 10px;
+}
+
+.dis-flex-wrap{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.div-2-1{
+    width: calc(100vw - 350px);
+    background-color: rgba(255, 255, 255, 0.25);
+    padding: 5px;
+    text-align: justify;
+    font-size: 18px;
+    border-radius: 20px;
+}
+
+.card{
+    width: 200px;
+    display: flex;
+    justify-content: space-around;
+    padding: 5px;
+}
+
+.card i{
+    font-size: 50px;
+}
+
+.card h3{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
