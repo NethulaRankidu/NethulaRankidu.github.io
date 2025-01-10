@@ -84,8 +84,9 @@ body {
 .div-spotify,
 .card {
     background-color: rgba(255, 255, 255, 0.25);
-    width: 300px;
-    margin: 10px;
+    width: 280px;
+    margin-left: 10px;
+    padding: 5px;
     border-radius: 10px;
 }
 
