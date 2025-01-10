@@ -141,6 +141,9 @@ body {
     body{
         margin: 0px 50px;
     }
+    .header{
+        margin: 0px -50px;
+    }
     .div-spotify{
         width: calc(100vw - 100px);
     }
