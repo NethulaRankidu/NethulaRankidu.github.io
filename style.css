@@ -90,6 +90,10 @@ body {
     border-radius: 10px;
 }
 
+.card{
+    margin: 10px;
+}
+
 .dis-flex-wrap {
     display: flex;
     flex-wrap: wrap;
