@@ -77,6 +77,24 @@ body {
     border-radius: 10px;
 }
 
+#img-activity-sml-rpc{
+    width: 25px;
+    height: 25px;
+    background-color: black;
+    border-radius: 50%;
+    border: 5px solid #4d4c4c;
+}
+
+.activity-image {
+    position:relative;
+}
+
+#img-activity-sml-rpc{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
 .activity-main {
     display: flex;
 }

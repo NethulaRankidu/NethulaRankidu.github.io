@@ -7,6 +7,7 @@ function index() {
     var listen_href = document.getElementById("spotify_song");
 
     var activity_cover = document.getElementById("img-activity-rpc");
+    var activity_cover_sml = document.getElementById("img-activity-sml-rpc");
     var activity_name = document.getElementById("activity_name");
     var activity_state = document.getElementById("activity_state");
     var activity_details = document.getElementById("activity_details");
@@ -32,35 +33,45 @@ function index() {
             listen_href.href = "https://open.spotify.com/track/" + data.data.spotify.track_id;
         }
 
-        if(data.data.activities.length != 0){
+        if (data.data.activities.length != 0) {
             if (data.data.activities[0].name != "Spotify") {
                 activityData(0);
             } else if (data.data.activities[1].name != "Spotify") {
                 activityData(1);
             }
 
-            function activityData(x){
+            function activityData(x) {
                 console.log(data.data.activities[x].name);
                 activity_name.innerHTML = data.data.activities[x].name;
                 activity_state.innerHTML = data.data.activities[x].state;
                 activity_details.innerHTML = data.data.activities[x].details;
-    
-                var str = data.data.activities[x].assets.large_image;
-                activity_cover.src = "https:/"+str.split("https").pop();
 
-                if(activity_name.innerHTML == "undefined"){
+                var str = data.data.activities[x].assets.large_image;
+                activity_cover.src = "https:/" + str.split("https").pop();
+
+                if (activity_name.innerHTML == "undefined") {
                     activity_name.innerHTML = "";
                 }
-                if(activity_state.innerHTML == "undefined"){
+                if (activity_state.innerHTML == "undefined") {
                     activity_state.innerHTML = "";
                 }
-                if(activity_details.innerHTML == "undefined"){
+                if (activity_details.innerHTML == "undefined") {
                     activity_details.innerHTML = "";
+                }
+
+                if (data.data.activities[x].name == "Windows Media Player") {
+                    activity_cover.src = "assets/wmp_big.png";
+                    console.log(activity_cover.src);
+                    activity_cover_sml.src = "assets/wmp_sml.png";
+                    console.log(activity_cover_sml.src);
                 }
             }
         }
 
-
+        console.log(activity_cover_sml.src);
+        if (activity_cover_sml.src == "http://127.0.0.1:5501/#") {
+            activity_cover_sml.style.display = "none";
+        }
     }).catch(err => {
         // Do something for an error here
         console.log("An error occured while trying to fetch data");
@@ -68,7 +79,7 @@ function index() {
     });
 }
 
-function clipboardDiscord(){
+function clipboardDiscord() {
     navigator.clipboard.writeText("wintergreen6631");
     window.alert("Username copied to clipboard!");
 }
