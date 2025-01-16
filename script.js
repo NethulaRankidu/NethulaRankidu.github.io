@@ -46,9 +46,6 @@ function index() {
                 activity_state.innerHTML = data.data.activities[x].state;
                 activity_details.innerHTML = data.data.activities[x].details;
 
-                var str = data.data.activities[x].assets.large_image;
-                activity_cover.src = "https:/" + str.split("https").pop();
-
                 if (activity_name.innerHTML == "undefined") {
                     activity_name.innerHTML = "";
                 }
@@ -59,11 +56,19 @@ function index() {
                     activity_details.innerHTML = "";
                 }
 
+                // for Windows Media Player
                 if (data.data.activities[x].name == "Windows Media Player") {
                     activity_cover.src = "assets/wmp_big.png";
                     console.log(activity_cover.src);
                     activity_cover_sml.src = "assets/wmp_sml.png";
                     console.log(activity_cover_sml.src);
+                }
+
+                // For Visual Studio Code
+                if(data.data.activities[x].name == "Code"){
+                    activity_name.innerHTML = "Visual Studio Code";
+                    var str = data.data.activities[x].assets.large_image;
+                    activity_cover.src = "https:/" + str.split("https").pop();
                 }
             }
         }
