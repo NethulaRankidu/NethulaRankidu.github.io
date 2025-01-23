@@ -56,17 +56,7 @@ function index() {
                     activity_details.innerHTML = "";
                 }
 
-                // for Windows Media Player
-                if (data.data.activities[x].name == "Windows Media Player") {
-                    activity_cover.src = "assets/wmp_big.png";
-                    console.log(activity_cover.src);
-
-                    activity_cover_sml.src = "assets/wmp_sml.png";
-                    console.log(activity_cover_sml.src);
-                }
-
-                // For Visual Studio Code
-                if(data.data.activities[x].name == "Code"){
+                if(data.data.activities[x].name == "Code"){   // For Visual Studio Code
                     activity_name.innerHTML = "Visual Studio Code";
 
                     var str = data.data.activities[x].assets.large_image;
@@ -74,6 +64,17 @@ function index() {
 
                     
                     activity_cover_sml.src = "https://upload.wikimedia.org/wikipedia/commons/9/9a/Visual_Studio_Code_1.35_icon.svg";
+                    console.log(activity_cover_sml.src);
+
+                }else{ // for other apps (usually should work)
+                    var application_name = data.data.activities[x].application_id;
+                    var large_image = data.data.activities[x].assets.large_image;
+                    var small_image = data.data.activities[x].assets.small_image;
+
+                    activity_cover.src = "https://cdn.discordapp.com/app-assets/"+application_name+"/"+large_image+".png";
+                    console.log(activity_cover.src);
+
+                    activity_cover_sml.src = "https://cdn.discordapp.com/app-assets/"+application_name+"/"+small_image+".png";
                     console.log(activity_cover_sml.src);
                 }
             }
