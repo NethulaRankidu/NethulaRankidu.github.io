@@ -62,9 +62,8 @@ function index() {
                     var str = data.data.activities[x].assets.large_image;
                     activity_cover.src = "https:/" + str.split("https").pop();
 
-                    
-                    activity_cover_sml.src = "https://upload.wikimedia.org/wikipedia/commons/9/9a/Visual_Studio_Code_1.35_icon.svg";
-                    console.log(activity_cover_sml.src);
+                    var str = data.data.activities[x].assets.small_image;
+                    activity_cover_sml.src = "https:/" + str.split("https").pop();
 
                 }else{ // for other apps (usually should work)
                     var application_name = data.data.activities[x].application_id;
