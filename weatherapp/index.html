@@ -4,50 +4,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Weather App</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 <style>
-    *{
-    font-family: 'Ubuntu Mono', 'monospace';
-    background-color: #121212;
-    color: white;
-}
+    * {
+        font-family: 'Ubuntu Mono', 'monospace';
+        background-color: #121212;
+        color: white;
+    }
 
-h2, h3{
-    margin: 0;
-}
+    h2,
+    h3 {
+        margin: 0;
+    }
 
-.abso-location{
-    display: flex;
-}
+    .abso-location {
+        display: flex;
+    }
 
-.weatherico{
-    display: flex;
-}
+    .weatherico {
+        display: flex;
+    }
 
-th{
-    text-align: left;
-}
-td.left{
-    padding-left: 10px;
-}
+    th {
+        text-align: left;
+    }
 
-.flex{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-}
-#update, .location, .description, .weatherico{
-    text-align: center;
-    justify-content: center;
-    
-}
+    td.left {
+        padding-left: 10px;
+    }
+
+    .flex {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+
+    #update,
+    .location,
+    .description,
+    .weatherico {
+        text-align: center;
+        justify-content: center;
+
+    }
 </style>
-<body>
+
+<body onload="onload();">
     <br><br>
     <div class="weather-widget">
         <br>
+        <center>
+            <form method="get">
+                <input type="text" id="city_name" name="city" placeholder="Your City Name..">
+                <button type="submit">Submit</button>
+            </form>
+            <br>
+        </center>
         <div class="location">
             <h2 class="city" id="city"></h2>
         </div>
@@ -171,88 +185,94 @@ td.left{
     <div id="update">Last Updated:</div>
 </body>
 <script>
-    const searchParams = new URLSearchParams(window.location.search);
+    function onload() {
+        const searchParams = new URLSearchParams(window.location.search);
+        var weatherdata; // used to store data, fetched from the api
+        var weathercity = "Colombo"; // change this with your city "city, country"
+        var weatherapi = "ca314356849cb4a6819e10567366ada6"; // openweathermap api key, change this with your one if it doesn't work
 
-    var weatherdata; // used to store data, fetched from the api
-    var weathercity = "Kurunegala"; // change this with your city "city, country"
-    var weatherapi = "ca314356849cb4a6819e10567366ada6"; // openweathermap api key, change this with your one if it doesn't work
-
-    fetch('https://api.openweathermap.org/data/2.5/weather?q=' + weathercity + '&APPID=' + weatherapi)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
-        })
-        .then(data => {
-            console.log('Data received:', data);
-            weatherdata = data;
-            displaydata();
-        })
-        .catch(error => {
-            console.error('There was a problem with the fetch operation:', error);
+        if (searchParams.has('city')) {
+            console.log(searchParams.get('city'));
+            weathercity = searchParams.get('city');
         }
-        );
 
-    function displaydata() {
-        // Assigning display related variables
-        var update = document.getElementById("update");
-        var city = document.getElementById("city");
-        var desc = document.getElementById("desc");
-        var temp = document.getElementById("weather-value");
-        var temp2 = document.getElementById("weather2");
-        var rain = document.getElementById("rain");
-        var win_speed = document.getElementById("speed");
-        var win_direction = document.getElementById("dir");
-        var pressure = document.getElementById("pressure");
-        var humidity = document.getElementById("humidity");
-        var lat = document.getElementById("lat");
-        var lon = document.getElementById("lon");
-        var seaLvl = document.getElementById("sea-lvl");
-        var gndLvl = document.getElementById("gnd-lvl");
-        var vis = document.getElementById("vis");
-        var sunrise = document.getElementById("sunrise");
-        var sunset = document.getElementById("sunset");
-        var country = document.getElementById("country");
-        var city2 = document.getElementById("city2");
-        var owm_id = document.getElementById("owmid");
-        var owm_api = document.getElementById("owmapi");
+        fetch('https://api.openweathermap.org/data/2.5/weather?q=' + weathercity + '&APPID=' + weatherapi)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Data received:', data);
+                weatherdata = data;
+                displaydata();
+            })
+            .catch(error => {
+                console.error('There was a problem with the fetch operation:', error);
+            }
+            );
 
-        //assigning values to variables
-        update.innerHTML = "Last Updated: " + undt(weatherdata.dt);
-        city.innerHTML = weatherdata.name + ', ' + weatherdata.sys.country;
-        desc.innerHTML = "Feels like " + round(tocelc(weatherdata.main.feels_like)) + "℃, " + weatherdata.weather[0].description;
-        temp.innerHTML = round(tocelc(weatherdata.main.temp)) + "°C";
-        temp2.innerHTML = round(tocelc(weatherdata.main.temp)) + "°C";
-        // rain.innerHTML = weatherdata.rain;
-        win_speed.innerHTML = weatherdata.wind.speed + " m/s";
-        win_direction.innerHTML = weatherdata.wind.deg;
-        pressure.innerHTML = weatherdata.main.pressure + " kPa";
-        humidity.innerHTML = weatherdata.main.humidity + "%";
-        lat.innerHTML = weatherdata.coord.lat;
-        lon.innerHTML = weatherdata.coord.lon;
-        seaLvl.innerHTML = weatherdata.main.sea_level;
-        gndLvl.innerHTML = weatherdata.main.grnd_level;
-        vis.innerHTML = weatherdata.visibility;
-        sunrise.innerHTML = undt(weatherdata.sys.sunrise);
-        sunset.innerHTML = undt(weatherdata.sys.sunset);
-        country.innerHTML = weatherdata.sys.country;
-        city2.innerHTML = weatherdata.name;
-        owm_id.innerHTML = weatherdata.id;
-        owm_api.innerHTML = weatherapi;
-    }
+        function displaydata() {
+            // Assigning display related variables
+            var update = document.getElementById("update");
+            var city = document.getElementById("city");
+            var desc = document.getElementById("desc");
+            var temp = document.getElementById("weather-value");
+            var temp2 = document.getElementById("weather2");
+            var rain = document.getElementById("rain");
+            var win_speed = document.getElementById("speed");
+            var win_direction = document.getElementById("dir");
+            var pressure = document.getElementById("pressure");
+            var humidity = document.getElementById("humidity");
+            var lat = document.getElementById("lat");
+            var lon = document.getElementById("lon");
+            var seaLvl = document.getElementById("sea-lvl");
+            var gndLvl = document.getElementById("gnd-lvl");
+            var vis = document.getElementById("vis");
+            var sunrise = document.getElementById("sunrise");
+            var sunset = document.getElementById("sunset");
+            var country = document.getElementById("country");
+            var city2 = document.getElementById("city2");
+            var owm_id = document.getElementById("owmid");
+            var owm_api = document.getElementById("owmapi");
 
-    function undt(num) { // convert unix date stamp to readable human format
-        var a = new Date(num * 1000);
-        return a.toLocaleString('si-LK');
-    }
+            //assigning values to variables
+            update.innerHTML = "Last Updated: " + undt(weatherdata.dt);
+            city.innerHTML = weatherdata.name + ', ' + weatherdata.sys.country;
+            desc.innerHTML = "Feels like " + round(tocelc(weatherdata.main.feels_like)) + "℃, " + weatherdata.weather[0].description;
+            temp.innerHTML = round(tocelc(weatherdata.main.temp)) + "°C";
+            temp2.innerHTML = round(tocelc(weatherdata.main.temp)) + "°C";
+            // rain.innerHTML = weatherdata.rain;
+            win_speed.innerHTML = weatherdata.wind.speed + " m/s";
+            win_direction.innerHTML = weatherdata.wind.deg;
+            pressure.innerHTML = weatherdata.main.pressure + " kPa";
+            humidity.innerHTML = weatherdata.main.humidity + "%";
+            lat.innerHTML = weatherdata.coord.lat;
+            lon.innerHTML = weatherdata.coord.lon;
+            seaLvl.innerHTML = weatherdata.main.sea_level;
+            gndLvl.innerHTML = weatherdata.main.grnd_level;
+            vis.innerHTML = weatherdata.visibility;
+            sunrise.innerHTML = undt(weatherdata.sys.sunrise);
+            sunset.innerHTML = undt(weatherdata.sys.sunset);
+            country.innerHTML = weatherdata.sys.country;
+            city2.innerHTML = weatherdata.name;
+            owm_id.innerHTML = weatherdata.id;
+            owm_api.innerHTML = weatherapi;
+        }
 
-    function round(num) {
-        return Math.round((num + Number.EPSILON) * 100) / 100;
-    }
+        function undt(num) { // convert unix date stamp to readable human format
+            var a = new Date(num * 1000);
+            return a.toLocaleString('si-LK');
+        }
 
-    function tocelc(num) {
-        return num - 273.15;
+        function round(num) {
+            return Math.round((num + Number.EPSILON) * 100) / 100;
+        }
+
+        function tocelc(num) {
+            return num - 273.15;
+        }
     }
 </script>
 
