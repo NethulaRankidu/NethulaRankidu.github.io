@@ -65,7 +65,18 @@ function index() {
                     var str = data.data.activities[x].assets.small_image;
                     activity_cover_sml.src = "https:/" + str.split("https").pop();
 
-                }else{ // for other apps (usually should work)
+                }else if(data.data.activities[x].name == "last.fm"){
+                    var application_name = data.data.activities[x].application_id;
+                    var large_image = data.data.activities[x].assets.large_image;
+                    var small_image = data.data.activities[x].assets.small_image;
+
+                    var str = data.data.activities[x].assets.large_image;
+                    activity_cover.src = "https:/" + str.split("https").pop();
+                    console.log("https:/" + str.split("https").pop());
+
+                    activity_cover_sml.src = "https://cdn.discordapp.com/app-assets/"+application_name+"/"+small_image+".png";
+                }
+                else{ // for other apps (usually should work)
                     var application_name = data.data.activities[x].application_id;
                     var large_image = data.data.activities[x].assets.large_image;
                     var small_image = data.data.activities[x].assets.small_image;
