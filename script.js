@@ -56,7 +56,7 @@ function index() {
                     activity_details.innerHTML = "";
                 }
 
-                if(data.data.activities[x].name == "Code"){   // For Visual Studio Code
+                if (data.data.activities[x].name == "Code") {   // For Visual Studio Code
                     activity_name.innerHTML = "Visual Studio Code";
 
                     var str = data.data.activities[x].assets.large_image;
@@ -65,26 +65,30 @@ function index() {
                     var str = data.data.activities[x].assets.small_image;
                     activity_cover_sml.src = "https:/" + str.split("https").pop();
 
-                }else if(data.data.activities[x].name == "last.fm"){
+                } else if (data.data.activities[x].name == "last.fm") {
                     var application_name = data.data.activities[x].application_id;
                     var large_image = data.data.activities[x].assets.large_image;
                     var small_image = data.data.activities[x].assets.small_image;
 
-                    var str = data.data.activities[x].assets.large_image;
-                    activity_cover.src = "https:/" + str.split("https").pop();
-                    console.log("https:/" + str.split("https").pop());
+                    if (large_image == "1108588929751453716") {
+                        activity_cover.src = "https://cdn.discordapp.com/app-assets/" + application_name + "/" + large_image + ".png";
+                    } else {
+                        var str = data.data.activities[x].assets.large_image;
+                        activity_cover.src = "https:/" + str.split("https").pop();
+                        console.log("https:/" + str.split("https").pop());
+                    }
 
-                    activity_cover_sml.src = "https://cdn.discordapp.com/app-assets/"+application_name+"/"+small_image+".png";
+                    activity_cover_sml.src = "https://cdn.discordapp.com/app-assets/" + application_name + "/" + small_image + ".png";
                 }
-                else{ // for other apps (usually should work)
+                else { // for other apps (usually should work)
                     var application_name = data.data.activities[x].application_id;
                     var large_image = data.data.activities[x].assets.large_image;
                     var small_image = data.data.activities[x].assets.small_image;
 
-                    activity_cover.src = "https://cdn.discordapp.com/app-assets/"+application_name+"/"+large_image+".png";
+                    activity_cover.src = "https://cdn.discordapp.com/app-assets/" + application_name + "/" + large_image + ".png";
                     console.log(activity_cover.src);
 
-                    activity_cover_sml.src = "https://cdn.discordapp.com/app-assets/"+application_name+"/"+small_image+".png";
+                    activity_cover_sml.src = "https://cdn.discordapp.com/app-assets/" + application_name + "/" + small_image + ".png";
                     console.log(activity_cover_sml.src);
                 }
             }
