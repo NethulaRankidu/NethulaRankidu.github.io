@@ -69,13 +69,14 @@ function index() {
                     var application_name = data.data.activities[x].application_id;
                     var large_image = data.data.activities[x].assets.large_image;
                     var small_image = data.data.activities[x].assets.small_image;
+                    console.log(large_image)
 
                     if (large_image == "1108588929751453716") {
+                        console.log("true");
                         activity_cover.src = "https://cdn.discordapp.com/app-assets/" + application_name + "/" + large_image + ".png";
                     } else {
                         var str = data.data.activities[x].assets.large_image;
                         activity_cover.src = "https:/" + str.split("https").pop();
-                        console.log("https:/" + str.split("https").pop());
                     }
 
                     activity_cover_sml.src = "https://cdn.discordapp.com/app-assets/" + application_name + "/" + small_image + ".png";
