@@ -69,7 +69,7 @@ function index() {
                     var application_name = data.data.activities[x].application_id;
                     var large_image = data.data.activities[x].assets.large_image;
                     var small_image = data.data.activities[x].assets.small_image;
-                    console.log(large_image)
+                    console.log(large_image);
 
                     if (large_image == "1108588929751453716") {
                         console.log("true");
@@ -91,6 +91,12 @@ function index() {
 
                     activity_cover_sml.src = "https://cdn.discordapp.com/app-assets/" + application_name + "/" + small_image + ".png";
                     console.log(activity_cover_sml.src);
+                }
+                if(large_image == undefined){
+                    activity_cover.style.display = "none";
+                }
+                if(small_image == undefined){
+                    activity_cover_sml.style.display = "none";
                 }
             }
         }
