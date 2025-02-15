@@ -15,6 +15,7 @@ function index() {
     fetch('https://api.lanyard.rest/v1/users/865515969111785482').then(response => {
         return response.json();
     }).then(data => {
+        console.log("JSON data received from lanyard (Discord 3rd party API)");
         // Work with JSON data here
         var avatar = data.data.discord_user.avatar;
         var user = data.data.discord_user.id;
