@@ -1,0 +1,68 @@
+{
+    "data": {
+      "kv": {},
+      "discord_user": {
+        "id": "865515969111785482",
+        "username": "wintergreen6631",
+        "avatar": "f3b5fb6c64745654e59d072ba869a5be",
+        "discriminator": "0",
+        "clan": null,
+        "avatar_decoration_data": null,
+        "bot": false,
+        "global_name": "wintergreen6631",
+        "primary_guild": null,
+        "display_name": "wintergreen6631",
+        "public_flags": 64
+      },
+      "activities": [
+        {
+          "flags": 1,
+          "id": "a6de73d9666f7143",
+          "name": "last.fm",
+          "type": 0,
+          "state": "Imagine Dragons",
+          "session_id": "eb85f6513a0443cb428dc50748c8dbbb",
+          "details": "Enemy (from the series Arcane League of Legends)",
+          "application_id": "1108588077900898414",
+          "assets": {
+            "large_image": "mp:external/yp5wcnTQ9L0oTsUZMGPN_iELaaWOuDgxKtAf5dR0urE/https/lastfm.freetls.fastly.net/i/u/174s/0553855155afbee981f9e460021522c5.jpg",
+            "large_text": "Mercury - Acts 1 & 2",
+            "small_image": "1108589045690400808",
+            "small_text": "Last.fm"
+          },
+          "created_at": 1739678885782,
+          "buttons": [
+            "Last.fm Profile",
+            "View Song"
+          ]
+        },
+        {
+          "flags": 1,
+          "id": "8757f7454a57669f",
+          "name": "Code",
+          "type": 0,
+          "state": "Working on script.js:42:33",
+          "session_id": "eb85f6513a0443cb428dc50748c8dbbb",
+          "details": "In NethulaRankidu.github.io - 0 problems found",
+          "application_id": "782685898163617802",
+          "timestamps": {
+            "start": 1739676831250
+          },
+          "assets": {
+            "large_image": "mp:external/ftBjuYHxeAs2FW1lMnr-_BxOSttEZIc1aAzg_W3nFlM/https/raw.githubusercontent.com/LeonardSSH/vscord/main/assets/icons/js.png",
+            "large_text": "Editing a JS file",
+            "small_image": "mp:external/Joitre7BBxO-F2IaS7R300AaAcixAvPu3WD1YchRgdc/https/raw.githubusercontent.com/LeonardSSH/vscord/main/assets/icons/vscode.png",
+            "small_text": "Visual Studio Code"
+          },
+          "created_at": 1739678809485
+        }
+      ],
+      "discord_status": "online",
+      "active_on_discord_web": false,
+      "active_on_discord_desktop": true,
+      "active_on_discord_mobile": false,
+      "listening_to_spotify": false,
+      "spotify": null
+    },
+    "success": true
+  }
