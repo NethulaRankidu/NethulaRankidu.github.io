@@ -1,4 +1,4 @@
-function index() {
+
     var img = document.getElementById("pfp");
     var listen_cover = document.getElementById("img-activity-spotify");
     var listen_title = document.getElementById("song_title");
@@ -119,8 +119,7 @@ function index() {
         console.log("An error occured while trying to fetch data");
         console.error(err);
     });
-}
-
+    
 function clipboardDiscord() {
     navigator.clipboard.writeText("wintergreen6631");
     window.alert("Username copied to clipboard!");
