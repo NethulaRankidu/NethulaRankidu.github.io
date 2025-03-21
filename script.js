@@ -36,23 +36,7 @@
             console.log("data.data.activities.length has = " + data.data.activities.length)
             for(x = 1; x < data.data.activities.length; x++){
                 console.log("hello");
-                if (data.data.activities[x].name == "last.fm") {
-                    listen_title.innerHTML = data.data.activities[x].assets.large_text;
-                    listen_artist.innerHTML = data.data.activities[x].state;
-                    listen_album.innerHTML = data.data.activities[x].details;
-    
-                    var application_name = data.data.activities[1].application_id;
-                    var large_image = data.data.activities[1].assets.large_image;
-                    console.log(large_image);
-        
-                    if (large_image == "1108588929751453716") {
-                        console.log("true");
-                        listen_cover.src = "https://cdn.discordapp.com/app-assets/" + application_name + "/" + large_image + ".png";
-                    } else {
-                        var str = data.data.activities[1].assets.large_image;
-                        listen_cover.src = "https:/" + str.split("https").pop();
-                    }
-                }
+                
             }
         }
 
@@ -64,10 +48,6 @@
             }
 
             function activityData(x) {
-                console.log(data.data.activities[x].name);
-                activity_name.innerHTML = data.data.activities[x].name;
-                activity_state.innerHTML = data.data.activities[x].state;
-                activity_details.innerHTML = data.data.activities[x].details;
 
                 if (activity_name.innerHTML == "undefined") {
                     activity_name.innerHTML = "";
@@ -88,7 +68,29 @@
                     var str = data.data.activities[x].assets.small_image;
                     activity_cover_sml.src = "https:/" + str.split("https").pop();
 
+                }
+                if (data.data.activities[x].name == "last.fm") {
+                    listen_title.innerHTML = data.data.activities[x].details;
+                    listen_artist.innerHTML = data.data.activities[x].state;
+                    listen_album.innerHTML = data.data.activities[x].assets.large_text;
+    
+                    var application_name = data.data.activities[x].application_id;
+                    var large_image = data.data.activities[x].assets.large_image;
+                    console.log(large_image);
+        
+                    if (large_image == "1108588929751453716") {
+                        console.log("true");
+                        listen_cover.src = "https://cdn.discordapp.com/app-assets/" + application_name + "/" + large_image + ".png";
+                    } else {
+                        var str = data.data.activities[x].assets.large_image;
+                        listen_cover.src = "https:/" + str.split("https").pop();
+                    }
                 } else { // for other apps (usually should work)
+                    console.log(data.data.activities[x].name);
+                    activity_name.innerHTML = data.data.activities[x].name;
+                    activity_state.innerHTML = data.data.activities[x].state;
+                    activity_details.innerHTML = data.data.activities[x].details;
+
                     var application_name = data.data.activities[x].application_id;
                     var large_image = data.data.activities[x].assets.large_image;
                     var small_image = data.data.activities[x].assets.small_image;
