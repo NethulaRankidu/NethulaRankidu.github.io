@@ -80,7 +80,7 @@ function index() {
                         listen_cover.src = "https:/" + str.split("https").pop();
                     }
 
-                    console.log(listen_title.innerHTML, listen_artist.innerHTML,);
+                    console.log(listen_title.innerHTML, listen_artist.innerHTML);
                 }
 
             }
