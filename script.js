@@ -37,8 +37,8 @@ function index() {
         if (data.data.activities.length != 0) {
             console.log("data.data.activities.length has = " + data.data.activities.length)
             for (x = 0; x < data.data.activities.length; x++) {
-                console.log("hello");
                 console.log(data.data.activities[x].name);
+
                 if (activity_name.innerHTML == "undefined") {
                     activity_name.innerHTML = "";
                 }
@@ -63,6 +63,7 @@ function index() {
                     console.log(activity_name.innerHTML, activity_cover.src, activity_cover_sml.src)
 
                 }
+                
                 if (data.data.activities[x].name == "last.fm") {
                     listen_title.innerHTML = data.data.activities[x].details;
                     listen_artist.innerHTML = data.data.activities[x].state;
@@ -81,6 +82,19 @@ function index() {
                     }
 
                     console.log(listen_title.innerHTML, listen_artist.innerHTML);
+                }
+                
+                if (data.data.activities[x].name == "Zoom") {   // For Visual Studio Code
+                    activity_name.innerHTML = data.data.activities[x].name;
+                    activity_state.innerHTML = data.data.activities[x].details;
+
+                    var application_name = data.data.activities[x].application_id;
+                    var large_image = data.data.activities[x].assets.large_image;
+                    console.log(large_image);
+
+                    console.log("true");
+                    activity_cover.src = "https://cdn.discordapp.com/app-assets/" + application_name + "/" + large_image + ".png";
+                    activity_cover_sml.src = "https://cdn.discordapp.com/app-assets/" + application_name + "/" + large_image + ".png";
                 }
 
             }
