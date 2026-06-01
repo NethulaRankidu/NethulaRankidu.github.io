@@ -42,8 +42,8 @@ fetch(gistUrl)
             const socialLi = document.createElement('li');
             socialLi.style.display = "flex";
             socialLi.style.alignItems = "center";
-            socialLi.style.gap = "8px";
-            socialLi.style.marginBottom = "8px";
+            socialLi.style.gap = "2px";
+            socialLi.style.marginBottom = "2px";
 
             // Using the local SVG icon paths you added in the JSON!
             socialLi.innerHTML = `
