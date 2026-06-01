@@ -1,0 +1,78 @@
+@import url("/assets/commoncss/spectral.css");
+@import url("/assets/commoncss/albert-sans.css");
+
+body {
+    background-color: #121212;
+    font-family: 'Albert Sans', Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    color: #f1f1f1;
+}
+
+.pfp-and-name {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.pfp {
+    width: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: white 1px solid;
+}
+
+.details * {
+    margin: 2px;
+    padding: 2px;
+}
+
+table {
+    border-collapse: collapse;
+    /* Prevents double borders */
+}
+
+table,
+th,
+td {
+    border: 4px solid black;
+    padding: 5px;
+}
+
+th{
+    height: 20px;
+}
+
+.my-skills{
+    width: 150px;
+    flex-grow: 1;
+}
+
+.my-interests{
+    flex-grow: 1;
+}
+
+.my-socials{
+    width: 330px;
+    flex-grow: 1;
+}
+
+a{
+    color:white;
+    text-decoration: none;
+}
+
+.invert-color {
+    /* Inverts black to white, brightness ensures it is pure white */
+    filter: invert(1) brightness(2);
+}
+
+.flex-wrap{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.flex-wrap *{
+    max-width: 100%;
+}
