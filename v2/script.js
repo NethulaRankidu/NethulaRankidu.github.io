@@ -1,5 +1,5 @@
 // Pulling Data from Gist
-const gistUrl = "https://gist.githubusercontent.com/NethulaRankidu/9a1ec79dd20546c1bc63a629a5f7e071/raw/dd9612b5fd8a5225c84a600587eb04a85f277103/about-me.json";
+const gistUrl = "https://gist.githubusercontent.com/NethulaRankidu/9a1ec79dd20546c1bc63a629a5f7e071/raw/about-me.json";
 
 fetch(gistUrl)
     .then(response => response.json())
@@ -91,3 +91,59 @@ function getDurationSinceUnixTime(unixTimestamp) {
 
     return { years, months, days };
 }
+
+
+
+// Function to convert Last.fm Unix timestamp to a "time ago" string
+function timeAgo(utsString) {
+  const songTime = parseInt(utsString) * 1000; // Convert seconds to milliseconds
+  const now = Date.now();
+  const diffInSeconds = Math.floor((now - songTime) / 1000);
+
+  if (diffInSeconds < 60) return "Just now";
+  
+  const diffInMinutes = Math.floor(diffInSeconds / 60);
+  if (diffInMinutes < 60) return `${diffInMinutes}m ago`;
+  
+  const diffInHours = Math.floor(diffInMinutes / 60);
+  if (diffInHours < 24) return `${diffInHours}h ago`;
+  
+  const diffInDays = Math.floor(diffInHours / 24);
+  return `${diffInDays}d ago`;
+}
+
+const workerUrl = "https://lastfm-proxy.wintergreen6631.workers.dev/";
+
+fetch(workerUrl)
+  .then(response => response.json())
+  .then(data => {
+    if (!data || !data.recenttracks || !data.recenttracks.track) return;
+
+    const track = data.recenttracks.track[0];
+    const isNowPlaying = track["@attr"] && track["@attr"].nowplaying === "true";
+    
+    const trackName = track.name;
+    const artistName = track.artist["#text"];
+    const album  = track.album["#text"];
+    const trackLink = track.url;
+    const albumArt = track.image[3]["#text"] || "/assets/icons/music.svg";
+
+    // Calculate status text or time ago
+    let statusText = "";
+    if (isNowPlaying) {
+      statusText = "🎧 Now Playing";
+    } else if (track.date && track.date.uts) {
+      statusText = `🌙 Last Played: ${timeAgo(track.date.uts)}`;
+    } else {
+      statusText = "🌙 Last Played";
+    }
+    document.getElementById("status-text").textContent = statusText;
+    document.getElementById("track-name").textContent = trackName;
+    document.getElementById("album-name").textContent = album;
+    document.getElementById("artist-name").textContent = artistName;
+    document.getElementById("cover-art").src = albumArt;
+    document.getElementById("song-url").href = trackLink;
+
+  })
+  .catch(err => console.error("Error formatting music data:", err));
+  
